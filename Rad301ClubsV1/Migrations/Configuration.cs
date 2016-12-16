@@ -48,6 +48,7 @@ namespace Rad301ClubsV1.Migrations
                 DateJoined = DateTime.Now,
                 UserName = "powell.paul@itsligo.ie",
                 PasswordHash = new PasswordHasher().HashPassword("Ppowell$1"),
+                EmailConfirmed = true,
                 SecurityStamp = Guid.NewGuid().ToString(),
             });
 
