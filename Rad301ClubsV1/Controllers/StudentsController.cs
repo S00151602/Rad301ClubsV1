@@ -14,6 +14,8 @@ namespace Rad301ClubsV1.Controllers
     [Authorize]
     public class StudentsController : Controller
     {
+       
+
         private ClubContext db = new ClubContext();
 
         // GET: Students

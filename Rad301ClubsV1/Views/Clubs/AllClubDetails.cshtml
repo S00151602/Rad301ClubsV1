@@ -4,6 +4,8 @@
 
 
 @* A form to post back to the same controller a search term *@
+<h1>Club Events</h1>
+
 <form method="get">
     <input type="search" name="ClubName" value="@ViewBag.cName" />
     <input type="submit" name="Search by Club name" />
@@ -47,8 +49,16 @@
             <td align="left">
                 @Html.DisplayFor(modelItem => ce.EndDateTime)
             </td>
+            @*<td>
+                @Html.ActionLink("Edit", "Edit", new { id = ce.EventID }) |
+                @Html.ActionLink("Details", "Details", new { id = ce.EventID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = ce.EventID }) |
+                @Html.ActionLink("Create", "Create", new { id = ce.EventID })
+            </td>*@
         </tr>
        }
+
+       
 
     </table>
 }
