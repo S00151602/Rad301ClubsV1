@@ -35,10 +35,14 @@
         </dd>
 
     </dl>
+    <h2>Curent Club Events</h2>
     <div class="form-inline" id="ClubEvents">
             @Html.Action(actionName: "_ClubEvents",
                 controllerName: "ClubEvents", routeValues: new { id = Model.ClubId})
         </div>
+
+   
+    <h2>Approved Members</h2>
     <div class="form-inline" id="Members">
         @Html.Action(actionName: "_ClubMembers",
                 controllerName: "Members", routeValues: new { id = Model.ClubId })

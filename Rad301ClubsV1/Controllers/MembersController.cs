@@ -18,7 +18,7 @@ namespace Rad301ClubsV1.Controllers
         public PartialViewResult _ClubMembers(int id)
         {
             var qry = db.members
-                .Where(ce => ce.ClubId == id).ToList();
+                .Where(ce => ce.ClubId == id && ce.approved == true).ToList();
             return PartialView(qry);
         }
 

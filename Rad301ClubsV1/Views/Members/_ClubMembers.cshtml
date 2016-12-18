@@ -7,6 +7,11 @@
         <th>
             @Html.DisplayNameFor(model => model.StudentID)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.student.Fname)
+        </th>
+        <th>@Html.DisplayNameFor(model => model.student.Sname)
+        </th>
     </tr>
     @foreach (var item in Model)
     {
@@ -16,6 +21,12 @@
             </td>
             <td>
               @Html.DisplayFor(m => item.StudentID) 
+            </td>
+            <td>
+                @Html.DisplayFor(m => item.student.Fname)
+            </td>
+            <td>
+                @Html.DisplayFor(m => item.student.Sname)
             </td>
         </tr>
     }

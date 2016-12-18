@@ -20,6 +20,35 @@ namespace Rad301ClubsV1.Controllers
             var qry = db.ClubEvents.Where(ce => ce.ClubId == id).ToList();
             return PartialView(qry);
         }
+        //Partial View for creating
+        public PartialViewResult _Create(int CludId)
+        {
+            return PartialView(new ClubEvent()
+            {
+                StartDateTime = DateTime.Now,
+                EndDateTime = DateTime.Now,
+                ClubId = CludId
+            });
+
+            
+        }
+        //For Partial View/ Create 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> _Create([Bind(Include = "EventID,Venue,Location,ClubId,StartDateTime,EndDateTime")] ClubEvent clubEvent)
+        {
+            if (ModelState.IsValid)
+            {
+                db.ClubEvents.Add(clubEvent);
+                await db.SaveChangesAsync();
+                return RedirectToAction(actionName: "Edit",
+                        controllerName: "Clubs",
+                        routeValues: new { id = clubEvent.ClubId });
+            }
+
+            return View(clubEvent);
+        }
+
 
         // GET: ClubEvents
         public async Task<ActionResult> Index()
@@ -61,7 +90,10 @@ namespace Rad301ClubsV1.Controllers
             {
                 db.ClubEvents.Add(clubEvent);
                 await db.SaveChangesAsync();
-                return RedirectToAction("Edit", "Clubs"); // change from index
+                // return RedirectToAction("Edit", "Clubs"); // change from index
+                return RedirectToAction(actionName: "Edit",
+                         controllerName: "Clubs",
+                         routeValues: new { id = clubEvent.ClubId });
             }
 
             ViewBag.ClubId = new SelectList(db.Clubs, "ClubId", "ClubName", clubEvent.ClubId);
